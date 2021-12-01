@@ -1,13 +1,21 @@
 import renderMain from "./pages/main/main.js";
-// import renderAbout from "./pages/about/about.js";
+import renderAbout from "./pages/about-us/about-us.js";
+import renderMovie from "./pages/movie/movie.js";
 
-const router = new Navigo("/cinemaxx-frontend/", { hash: true });
+let root = "/"
+if(location.hostname.includes("github"))
+    rott = "/cinemaxx-frontend/";
+    
+const router = new Navigo(root, { hash: true });
 router
   .on({
   	"/": () => {
       renderMain();
     },
-    // "about": () => {
-    //   renderAbout();
-    // }
+    "/about/": () => {
+      renderAbout();
+    },
+    "/movie/:id/": ({data}) => {
+      renderMovie(data.id);
+    }
 	}).resolve();
