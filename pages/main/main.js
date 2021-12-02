@@ -38,8 +38,6 @@ const getClientLocation = () => {
         });
 };
 
-<<<<<<< HEAD
-=======
 const getViewings = () => {
 
     fetch(backendURI + "/viewings/location/4?date=2021-10-25")
@@ -48,4 +46,10 @@ const getViewings = () => {
 
     });
 }
->>>>>>> fa67508558481e8e987b0f08c81f3d49c60acb8c
+
+fetch("https://cinema-backend1.herokuapp.com/movie/1")
+        .then((response) => response.json())
+        .then((movie) => {
+            
+            console.log(movie.title);
+        });
