@@ -4,7 +4,7 @@ import renderMovie from "./pages/movie/movie.js";
 
 let root = "/"
 if(location.hostname.includes("github"))
-    rott = "/cinemaxx-frontend/";
+    root = "/cinemaxx-frontend/";
     
 const router = new Navigo(root, { hash: true });
 router
