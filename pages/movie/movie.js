@@ -4,7 +4,5 @@ export default (id) => {
         .then((response) => response.text())
         .then((html) => {
             content.innerHTML = html;
-
-            //id;
         });
 };
