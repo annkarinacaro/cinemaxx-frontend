@@ -1,53 +1,99 @@
 export default () => {
     const content = document.querySelector(".content");
+    const backendURI = "https://cinema-backend1.herokuapp.com";
+    const numOfDaysAhead = 10; //How many days ahead of today should be possible to book
+    let locationDropdown;
+    let dateDropdown;
+
+    const initLocations = () => {
+        //Get all the locations
+        fetch(backendURI + "/locations")
+            .then(response => response.json())
+            .then(locations => {
+                //Reset locations
+                while(locationDropdown.children.length > 0) locationDropdown.removeChild(locationDropdown.firstChild);
+                //Add new locations
+                locations.forEach(location => {
+                    let locationElement = document.createElement("option");
+                    locationElement.classList.add("dropdown-item");
+                    locationElement.innerHTML = location.name;
+                    locationElement.dataset.district = location.district;
+                    locationElement.value = location.id;
+                    locationDropdown.appendChild(locationElement);
+                });
+
+                //Select the cinema closest to the client based on their IP address (if possible)
+                chooseClosestLocation();
+            });
+    }
+
+    const chooseClosestLocation = () => {
+        //Get client city
+        fetch("http://www.geoplugin.net/json.gp")
+            .then((response) => response.json())
+            .then((geodata) => {
+                Array.from(locationDropdown.children).forEach((location, index) => {
+                    //If user city is in the location name
+                    if(location.dataset.district.includes(geodata.geoplugin_city)){
+                        location.selectedIndex = index;
+                    }
+                });
+            });
+    };
+
+    const initDates = () => {
+        //Reset dates
+        while(dateDropdown.children.length > 0) dateDropdown.removeChild(dateDropdown.firstChild);
+        //Add new dates
+        for(let i = 0; i < numOfDaysAhead; i++){
+
+            const date = new Date().addDays(i);
+            let dateTitle = parseDate(date);
+            if(parseDate(date) === parseDate(new Date())){
+                dateTitle = "Today";
+            }
+            else if (parseDate(date) == parseDate(new Date().addDays(1))){
+                dateTitle = "Tomorrow";
+            }
+
+            let dateElement = document.createElement("option");
+            dateElement.classList.add("dropdown-item");
+            dateElement.innerHTML = dateTitle;
+            dateElement.value = parseDate(date);
+            dateDropdown.appendChild(dateElement);
+        }
+    };
+
+    const getViewings = () => {
+        const selectedLocationId = locationDropdown.value;
+        const selectedDate = dateDropdown.value;
+        const viewingsUrl = backendURI + "/viewings/location/" + selectedLocationId + "?date=" + selectedDate;
+        fetch(viewingsUrl)
+            .then(response => response.json())
+            .then((viewings) => {
+                console.log(viewings);
+            });
+    }
+
     fetch("./pages/main/main.html")
         .then((response) => response.text())
         .then((html) => {
             content.innerHTML = html;
-        }); 
-};
 
-const backendURI = "https://cinema-backend1.herokuapp.com";
-const locationDropdown = document.querySelector(".location-dropdown");
+            locationDropdown = document.querySelector(".location-dropdown");
+            dateDropdown = document.querySelector(".date-dropdown");
 
-const initLocations = () => {
-    fetch(backendURI + "/locations", {
-        method: "GET"
-    })
-    .then(response => response.json())
-    .then(locations => {
-        //Reset locations
-        while(locationDropdown.children.length > 0) locationDropdown.removeChild(locationDropdown.firstChild);
-        //Add new locations
-        locations.forEach(location => {
-            const locationElement = document.createElement("a");
-            locationElement.classList.add("dropdown-item");
-            locationElement.href = "#";
-            locationElement.innerText = location.name;
-            locationElement.value = location.id;
-        });
-    });
-}
+            initLocations();
+            initDates();
 
-initLocations();
-
-const getClientLocation = () => {
-    fetch("http://www.geoplugin.net/json.gp")
-        .then((response) => response.json())
-        .then((geodata) => {
-            
-            console.log(geodata.geoplugin_city);
+            document.querySelector("button").addEventListener("click", getViewings); 
         });
 };
 
-<<<<<<< HEAD
-=======
-const getViewings = () => {
-
-    fetch(backendURI + "/viewings/location/4?date=2021-10-25")
-    .then(response => response.json())
-    .then((viewings) => {
-
-    });
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
 }
->>>>>>> fa67508558481e8e987b0f08c81f3d49c60acb8c
+
+const parseDate = (date) => date.toISOString().split('T')[0];
