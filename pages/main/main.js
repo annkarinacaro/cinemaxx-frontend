@@ -11,7 +11,9 @@ const backendURI = "https://cinema-backend1.herokuapp.com";
 const locationDropdown = document.querySelector(".location-dropdown");
 
 const initLocations = () => {
-    fetch(backendURI + "/locations")
+    fetch(backendURI + "/locations", {
+        method: "GET"
+    })
     .then(response => response.json())
     .then(locations => {
         //Reset locations
