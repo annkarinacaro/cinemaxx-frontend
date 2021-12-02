@@ -15,7 +15,3 @@ let getClientLocation = () => {
         });
 };
 
-let getLocation = () =>{
-    fetch("http://3.209.141.167/viewings/location/4?date=2021-10-25")
-    .then
-}
