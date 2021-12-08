@@ -10,12 +10,10 @@ export default (viewingId) => {
 
 const backendURI = "https://cinema-backend1.herokuapp.com";
 
-
-
 function changeColor() {
     if (this.classList.contains("selected")) {
         this.classList.remove("selected");
-    } else if (!this.classList.contains("booked")){
+    } else if (!this.classList.contains("booked")) {
         this.classList.add("selected");
     }
 }
@@ -27,37 +25,35 @@ const getSeats = (viewingId, callback) => {
 };
 
 const initSeatSelector = (viewingId) => {
-    const rowLength = 10;
-    const seatLength = 10;
     const seatSelector = document.querySelector(".seat-selector");
-    getSeats(viewingId, (bookedSeats) => {
+    getSeats(viewingId, (seatInfo) => {
+        const rowLength = seatInfo.dimensions.rows;
+        const seatLength = seatInfo.dimensions.seats;
+        const bookedSeats = seatInfo.seats;
         for (let i = 0; i < rowLength; i++) {
             const rowElement = document.createElement("div");
             rowElement.classList.add("row");
             seatSelector.appendChild(rowElement);
 
-    
             for (let j = 0; j < seatLength; j++) {
                 const seatElement = document.createElement("div");
                 seatElement.classList.add("seat");
                 rowElement.appendChild(seatElement);
-                
-                bookedSeats.forEach(bookedSeat => {
-                    
-                    if(i === bookedSeat.row && j === bookedSeat.seat){
-        
+
+                bookedSeats.forEach((bookedSeat) => {
+                    if (i === bookedSeat.row && j === bookedSeat.seat) {
                         seatElement.classList.add("booked");
                     }
                 });
-        
+
                 seatElement.addEventListener("click", changeColor);
             }
         }
     });
-    
 };
 
-
-const getSelectedSeats = () =>{
-    return document.querySelector(".seat-selector > .row > .seat.selected:not(.booked)")
-}
+const getSelectedSeats = () => {
+    return document.querySelector(
+        ".seat-selector > .row > .seat.selected:not(.booked)"
+    );
+};
