@@ -1,0 +1,30 @@
+.seat-selector {
+    margin: 5px;
+    padding: 5px;
+    background-color: rgb(243, 243, 243);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: fit-content;
+}
+
+.row {
+    padding: 3px 6px;
+    width: 100%;   
+    display: flex; 
+ flex-direction: row;
+ gap: 3px;
+}
+
+.seat{
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: rgb(49, 179, 49);
+}
+
+.seat.selected {
+    background-color: rgb(51, 152, 185);
+}
+
+.seat.booked{
+    background-color: rgb(211, 89, 89);
+}
