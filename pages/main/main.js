@@ -82,9 +82,29 @@ export default () => {
                     const posterElement = document.createElement("img");
                     posterElement.src = viewing.movie.poster;
                     posterElement.classList.add("poster");
-                    movieContainer.appendChild(posterElement);
+                    movieElement.appendChild(posterElement);
 
-                    const titleElement = document.createElement("")
+                    const titleElement = document.createElement("h3");
+                    titleElement.innerHTML = viewing.movie.title;
+                    titleElement.classList.add("title");
+                    movieElement.appendChild(titleElement);
+
+                    const timeElement = document.createElement("h4");
+                    const time = new Date(viewing.dateTime);
+                    timeElement.innerHTML = time.getHours() + ":" + leadingZeroes(time.getMinutes(), 2);
+                    timeElement.classList.add("time");
+                    movieElement.appendChild(timeElement);
+
+                    const durationElement = document.createElement("h4");
+                    durationElement.innerHTML = viewing.movie.duration;
+                    durationElement.classList.add("duration");
+                    movieElement.appendChild(durationElement);
+
+                    const buttonElement = document.createElement("cta");
+                    buttonElement.addEventListener("click", () => window.location.href = "/#/movie/" + viewing.viewingId);
+                    buttonElement.innerHTML = "SEE MORE";
+                    buttonElement.classList.add("cta");
+                    movieElement.appendChild(buttonElement);
                 });
             });
     }
@@ -112,3 +132,9 @@ Date.prototype.addDays = function(days) {
 }
 
 const parseDate = (date) => date.toISOString().split('T')[0];
+
+function leadingZeroes(num, size) {
+    num = num.toString();
+    while (num.length < size) num = "0" + num;
+    return num;
+}

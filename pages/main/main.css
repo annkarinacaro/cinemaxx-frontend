@@ -13,7 +13,7 @@ body {
   align-items: center;
   padding: 20px;
   background-color: rgb(235, 235, 227);
-  position: absolute;
+  position: fixed;
   z-index: 10;
 }
 
