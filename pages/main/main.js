@@ -24,6 +24,9 @@ export default () => {
 
                 //Select the cinema closest to the client based on their IP address (if possible)
                 chooseClosestLocation();
+
+                getViewings();
+
             });
     }
 
@@ -38,7 +41,7 @@ export default () => {
                         location.selectedIndex = index;
                     }
                 });
-            });
+            });        
     };
 
     const initDates = () => {
@@ -69,11 +72,13 @@ export default () => {
         const selectedDate = dateDropdown.value;
         const viewingsUrl = backendURI + "/viewings/location/" + selectedLocationId + "?date=" + selectedDate;
 
-        const movieContainer = document.querySelector(".movies");
-
         fetch(viewingsUrl)
             .then(response => response.json())
             .then((viewings) => {
+
+                const movieContainer = document.querySelector(".movies");
+                while(movieContainer.children.length > 0) movieContainer.removeChild(movieContainer.firstChild);
+
                 viewings.forEach(viewing => {
                     const movieElement = document.createElement("div");
                     movieElement.classList.add("movie");
@@ -110,19 +115,19 @@ export default () => {
     }
 
   fetch("./pages/main/main.html")
-        .then((response) => response.text())
-        .then((html) => {
-            content.innerHTML = html;
+    .then((response) => response.text())
+    .then((html) => {
+        content.innerHTML = html;
 
-            locationDropdown = document.querySelector(".location-dropdown");
-            dateDropdown = document.querySelector(".date-dropdown");
+        locationDropdown = document.querySelector(".location-dropdown");
+        dateDropdown = document.querySelector(".date-dropdown");
 
-            initLocations();
-            initDates();
- 
-            locationDropdown.addEventListener("change", getViewings);
-            dateDropdown.addEventListener("change", getViewings);
-        });
+        initLocations();
+        initDates();
+
+        locationDropdown.addEventListener("change", getViewings);
+        dateDropdown.addEventListener("change", getViewings);
+    });
 };
 
 Date.prototype.addDays = function(days) {
