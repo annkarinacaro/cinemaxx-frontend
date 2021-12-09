@@ -1,13 +1,13 @@
-export default async () => {
+export default () => {
     const content = document.querySelector(".content");
     const backendURI = "https://cinema-backend1.herokuapp.com";
     const numOfDaysAhead = 30; //How many days ahead of today should be possible to book
     let locationDropdown;
     let dateDropdown;
 
-    const initLocations = async () => {
+    const initLocations = () => {
         //Get all the locations
-        return fetch(backendURI + "/locations")
+        fetch(backendURI + "/locations")
             .then(response => response.json())
             .then(locations => {
                 //Reset locations
@@ -23,13 +23,13 @@ export default async () => {
                 });
 
                 //Select the cinema closest to the client based on their IP address (if possible)
-                return chooseClosestLocation();
+                chooseClosestLocation();
             });
     }
 
-    const chooseClosestLocation = async () => {
+    const chooseClosestLocation = () => {
         //Get client city
-        return fetch("http://www.geoplugin.net/json.gp")
+        fetch("http://www.geoplugin.net/json.gp")
             .then((response) => response.json())
             .then((geodata) => {
                 Array.from(locationDropdown.children).forEach((location, index) => {
@@ -83,7 +83,7 @@ export default async () => {
             locationDropdown = document.querySelector(".location-dropdown");
             dateDropdown = document.querySelector(".date-dropdown");
 
-            await initLocations();
+             initLocations();
             initDates();
 
             document.querySelector("button").addEventListener("click", getViewings); 
