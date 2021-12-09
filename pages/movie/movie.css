@@ -30,14 +30,15 @@
 }
 
 .column {
-    float: left;
-    flex: 33.33%;
-    padding: 5px;
+    width:200px;
+    height:170x;
+    margin-right:30px;
   }
+
 
   img {
     border: 10px solid #E3AFBC;
     border-radius: 8px;
-    width: 50%;
+    width: 300px;
 
   }
