@@ -28,3 +28,16 @@
 .seat.booked{
     background-color: rgb(211, 89, 89);
 }
+
+.column {
+    float: left;
+    flex: 33.33%;
+    padding: 5px;
+  }
+
+  img {
+    border: 10px solid #E3AFBC;
+    border-radius: 8px;
+    width: 50%;
+
+  }
