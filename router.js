@@ -1,8 +1,10 @@
 import renderMain from "./pages/main/main.js";
 import renderAbout from "./pages/about-us/about-us.js";
 import renderMovie from "./pages/movie/movie.js";
+import renderDashboard from "./pages/dashboard/dashboard.js";
 
-let root = "/"
+
+let root = "/";
 if(location.hostname.includes("github"))
     root = "/cinemaxx-frontend/";
     
@@ -17,5 +19,8 @@ router
     },
     "/movie/:id/": ({data}) => {
       renderMovie(data.id);
+    },
+    "/dashboard/": () =>{
+      renderDashboard();
     }
 	}).resolve();
