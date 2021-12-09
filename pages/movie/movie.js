@@ -55,16 +55,18 @@ const initSeatSelector = () => {
             }
         }
     });
+    const bookingButton = document.querySelector("button");
+    bookingButton.addEventListener("click", makeAbooking);
 };
 
 const getSelectedSeats = () => {
-    const seats = document.querySelector(
+    const seats = document.querySelectorAll(
         ".seat-selector > .row > .seat.selected:not(.booked)"
     );
     const jsonSeats = [];
     seats.forEach((seat) => {
         const jsonSeat = { row: seat.dataset.row, seat: seat.dataset.seat };
-        jsonSeats.add(jsonSeat);
+        jsonSeats.push(jsonSeat);
     });
 
     return jsonSeats;
@@ -85,15 +87,16 @@ const setMovieInfo = () => {
 };
 
 const makeAbooking = () => {
-    const email = document.querySelector("email").innerHTML;
+    const email = document.querySelector(".email").innerHTML;
     const seats = getSelectedSeats();
+    console.log(seats);
     const body = {
         viewing: viewingId,
         email: email,
         seats: seats,
     };
 
-    fetch(backendURI + "booking", {
+    fetch(backendURI + "/booking", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
