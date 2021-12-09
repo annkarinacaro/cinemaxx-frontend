@@ -59,12 +59,15 @@ const getSelectedSeats = () => {
     );
 };
 const setMovieInfo = (viewingId) =>{
-fetch(backendURI +"/viewings/location/4?date=2021-10-25")
+fetch(backendURI +"/viewing/"+viewingId)
 .then((response) => response.json())
-.then((viewings)=>{
-    const viewingData = viewings.filter((viewing) => viewing.viewingId == viewingId)[0];
+.then((viewing)=>{
+    let movieTitle = document.querySelector("h2.movie-title");
+    let movieDescription= document.querySelector("h2.movie-description");
     let imagePoster = document.querySelector("img.movie-poster");
-    imagePoster.src = viewingData.movie.poster;
+    movieTitle.innerHTML = viewing.movie.title;
+    movieDescription.innerHTML = viewing.movie.description;
+    imagePoster.src = viewing.movie.poster;
     
 })
 };
