@@ -68,10 +68,24 @@ export default () => {
         const selectedLocationId = locationDropdown.value;
         const selectedDate = dateDropdown.value;
         const viewingsUrl = backendURI + "/viewings/location/" + selectedLocationId + "?date=" + selectedDate;
+
+        const movieContainer = document.querySelector(".movies");
+
         fetch(viewingsUrl)
             .then(response => response.json())
             .then((viewings) => {
-                console.log(viewings);
+                viewings.forEach(viewing => {
+                    const movieElement = document.createElement("div");
+                    movieElement.classList.add("movie");
+                    movieContainer.appendChild(movieElement);
+
+                    const posterElement = document.createElement("img");
+                    posterElement.src = viewing.movie.poster;
+                    posterElement.classList.add("poster");
+                    movieContainer.appendChild(posterElement);
+
+                    const titleElement = document.createElement("")
+                });
             });
     }
 
@@ -85,8 +99,7 @@ export default () => {
 
             initLocations();
             initDates();
-
-            document.querySelector("button").addEventListener("click", getViewings); 
+ 
             locationDropdown.addEventListener("change", getViewings);
             dateDropdown.addEventListener("change", getViewings);
         });

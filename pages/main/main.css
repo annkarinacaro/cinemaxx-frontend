@@ -1,5 +1,6 @@
 body {
   position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header {
@@ -46,7 +47,34 @@ body {
 }
 
 .movies > .movie {
-  height: 350px;
-  width: 250px;
+  min-height: 350px;
+  width: 350px;
   background-color: rgb(238, 238, 238);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+}
+
+.movie > .poster {
+  width: 90%;
+  height: auto;
+}
+
+.movie > .title {
+  font-size: 30px;
+}
+
+.cta {
+  background-color: blueviolet;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 20px;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
