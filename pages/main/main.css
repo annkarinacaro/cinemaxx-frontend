@@ -25,25 +25,28 @@ body {
   display: inline;
 }
 
-select {
-  padding: 5px;
-  font-size: 16px;
-  min-width: 100px;
-}
-
 .logo {
   color:rgb(31, 34, 199);
   font-size: 40px;
   font-family:Verdana, Geneva, Tahoma, sans-serif
 }
-/* 
-select > option > span {
-  font-size: 10px !important;
-  font-weight: 100 !important;
-  color: gray !important;
-} */
+
+/* MOVIES */
 
 .movies {
   padding: 100px 10px;
   position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.movies > .movie {
+  height: 350px;
+  width: 250px;
+  background-color: rgb(238, 238, 238);
 }

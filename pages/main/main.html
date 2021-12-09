@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href=".\pages\main\main.css" />
-    <link rel="stylesheet" href=".\style.css" />
-  </head>
-  <body>
-    <div class="header">
-        <div>
-            <h3 class="logo">CinemaXX</h3>
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link rel="stylesheet" href=".\pages\main\main.css" />
+      <link rel="stylesheet" href=".\style.css" />
+    </head>
+    <body>
+        <div class="header">
+            <div>
+                <h3 class="logo">CinemaXX</h3>
+            </div>
+            <div>
+                <select class="location-dropdown" ></select>
+                <select class="date-dropdown"></select>
+                <h3 class="about-redirect">About</h3>
+            </div>
         </div>
-        <div>
-            <select class="location-dropdown" ></select>
-            <select class="date-dropdown"></select>
-            <h3 class="about-redirect">About</h3>
+        <div class="movies">
+            <!-- <button>Get viewings!</button> -->
+            <div class="movie">
+                <img class="poster" src="https://www.imdb.com/title/tt0050083/mediaviewer/rm2927108352/?ref_=tt_ov_i">
+                <h3 class="title">12 Angry men</h3>
+                <h4 class="duration">86min</h4>
+                <button class="cta">See more</button>
+            </div>
         </div>
-    </div>
-    <div class="movies">
-        <button>Get viewings!</button>
-    </div>
-  </body>
+      </body>
 </html>
