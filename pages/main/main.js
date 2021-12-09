@@ -24,6 +24,9 @@ export default () => {
 
                 //Select the cinema closest to the client based on their IP address (if possible)
                 chooseClosestLocation();
+
+                getViewings();
+
             });
     }
 
@@ -38,7 +41,7 @@ export default () => {
                         location.selectedIndex = index;
                     }
                 });
-            });
+            });        
     };
 
     const initDates = () => {
@@ -69,11 +72,13 @@ export default () => {
         const selectedDate = dateDropdown.value;
         const viewingsUrl = backendURI + "/viewings/location/" + selectedLocationId + "?date=" + selectedDate;
 
-        const movieContainer = document.querySelector(".movies");
-
         fetch(viewingsUrl)
             .then(response => response.json())
             .then((viewings) => {
+
+                const movieContainer = document.querySelector(".movies");
+                while(movieContainer.children.length > 0) movieContainer.removeChild(movieContainer.firstChild);
+
                 viewings.forEach(viewing => {
                     const movieElement = document.createElement("div");
                     movieElement.classList.add("movie");
@@ -82,27 +87,47 @@ export default () => {
                     const posterElement = document.createElement("img");
                     posterElement.src = viewing.movie.poster;
                     posterElement.classList.add("poster");
-                    movieContainer.appendChild(posterElement);
+                    movieElement.appendChild(posterElement);
 
-                    const titleElement = document.createElement("")
+                    const titleElement = document.createElement("h3");
+                    titleElement.innerHTML = viewing.movie.title;
+                    titleElement.classList.add("title");
+                    movieElement.appendChild(titleElement);
+
+                    const timeElement = document.createElement("h4");
+                    const time = new Date(viewing.dateTime);
+                    timeElement.innerHTML = time.getHours() + ":" + leadingZeroes(time.getMinutes(), 2);
+                    timeElement.classList.add("time");
+                    movieElement.appendChild(timeElement);
+
+                    const durationElement = document.createElement("h4");
+                    durationElement.innerHTML = viewing.movie.duration;
+                    durationElement.classList.add("duration");
+                    movieElement.appendChild(durationElement);
+
+                    const buttonElement = document.createElement("cta");
+                    buttonElement.addEventListener("click", () => window.location.href = "/#/movie/" + viewing.viewingId);
+                    buttonElement.innerHTML = "SEE MORE";
+                    buttonElement.classList.add("cta");
+                    movieElement.appendChild(buttonElement);
                 });
             });
     }
 
   fetch("./pages/main/main.html")
-        .then((response) => response.text())
-        .then((html) => {
-            content.innerHTML = html;
+    .then((response) => response.text())
+    .then((html) => {
+        content.innerHTML = html;
 
-            locationDropdown = document.querySelector(".location-dropdown");
-            dateDropdown = document.querySelector(".date-dropdown");
+        locationDropdown = document.querySelector(".location-dropdown");
+        dateDropdown = document.querySelector(".date-dropdown");
 
-            initLocations();
-            initDates();
- 
-            locationDropdown.addEventListener("change", getViewings);
-            dateDropdown.addEventListener("change", getViewings);
-        });
+        initLocations();
+        initDates();
+
+        locationDropdown.addEventListener("change", getViewings);
+        dateDropdown.addEventListener("change", getViewings);
+    });
 };
 
 Date.prototype.addDays = function(days) {
@@ -112,3 +137,9 @@ Date.prototype.addDays = function(days) {
 }
 
 const parseDate = (date) => date.toISOString().split('T')[0];
+
+function leadingZeroes(num, size) {
+    num = num.toString();
+    while (num.length < size) num = "0" + num;
+    return num;
+}
