@@ -89,7 +89,7 @@ export default () => {
             });
     }
 
-    fetch("./pages/main/main.html")
+  fetch("./pages/main/main.html")
         .then((response) => response.text())
         .then((html) => {
             content.innerHTML = html;

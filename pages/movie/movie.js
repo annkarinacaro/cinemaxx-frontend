@@ -5,6 +5,7 @@ export default (viewingId) => {
         .then((html) => {
             content.innerHTML = html;
             initSeatSelector(viewingId);
+            setMovieInfo(viewingId);
         });
 };
 
@@ -56,4 +57,17 @@ const getSelectedSeats = () => {
     return document.querySelector(
         ".seat-selector > .row > .seat.selected:not(.booked)"
     );
+};
+const setMovieInfo = (viewingId) =>{
+fetch(backendURI +"/viewing/"+viewingId)
+.then((response) => response.json())
+.then((viewing)=>{
+    let movieTitle = document.querySelector("h2.movie-title");
+    let movieDescription= document.querySelector("h2.movie-description");
+    let imagePoster = document.querySelector("img.movie-poster");
+    movieTitle.innerHTML = viewing.movie.title;
+    movieDescription.innerHTML = viewing.movie.description;
+    imagePoster.src = viewing.movie.poster;
+    
+})
 };
