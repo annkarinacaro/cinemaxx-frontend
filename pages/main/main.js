@@ -5,7 +5,7 @@ export default () => {
     let locationDropdown;
     let dateDropdown;
 
-    const initLocations = () => {
+    function initLocations() {
         //Get all the locations
         return fetch(backendURI + "/locations")
             .then(response => response.json())
@@ -30,7 +30,7 @@ export default () => {
             });
     }
 
-    const chooseClosestLocation = () => {
+    function chooseClosestLocation(){
         //Get client city
         return fetch("http://www.geoplugin.net/json.gp")
             .then((response) => response.json())
@@ -44,7 +44,7 @@ export default () => {
             });        
     };
 
-    const initDates = () => {
+    function initDates(){
         //Reset dates
         while(dateDropdown.children.length > 0) dateDropdown.removeChild(dateDropdown.firstChild);
         //Add new dates
