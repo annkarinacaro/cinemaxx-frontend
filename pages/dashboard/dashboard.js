@@ -104,43 +104,45 @@ export default () => {
       .then((viewings) => {
         console.log(viewings);
 
-//         var col = [];
-//         for (var i = 0; i < viewings.length; i++) {
-//           for (var key in viewings[i]) {
-//             if (col.indexOf(key) === -1) {
-//               col.push(key);
-//             }
-//           }
-//         }
-// console.log(col.length);
-//         // CREATE DYNAMIC TABLE.
-//         var table = document.createElement("table");
+        var table = document.getElementById("admin-table");
 
-//         // // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+        for (var i = 0; i < viewings.length; i++) {
 
-//          var tr = table.insertRow(-1); // TABLE ROW.
+        var row = table.insertRow(-1);
 
-//         for (var i = 0; i < col.length; i++) {
-//           var th = document.createElement("th"); // TABLE HEADER.
-//           th.innerHTML = col[i];
-//           tr.appendChild(th);
-//         }
+        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
 
-//         // ADD JSON DATA TO THE TABLE AS ROWS.
-//         for (var i = 0; i < viewings.length; i++) {
-//           tr = table.insertRow(-1);
 
-//           for (var j = 0; j < col.length; j++) {
-//             var tabCell = tr.insertCell(-1);
-//             tabCell.innerHTML = viewings[i][col[j]];
-//           }
-//         }
+        // Add some text to the new cells:
+        cell1.innerHTML = viewings[i].viewingId;
+        cell2.innerHTML = viewings[i].movie.title;
+        cell3.innerHTML = viewings[i].dateTime;
+        cell4.innerHTML = "EDIT";
+        cell5.innerHTML = "DELETE";
 
-//         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-//         var divContainer = document.querySelector(".movies");
-//         divContainer.innerHTML = " ";
-//         divContainer.appendChild(table);
-       });
+        // console.log(col.length);
+        }
+
+        //         // ADD JSON DATA TO THE TABLE AS ROWS.
+        //         for (var i = 0; i < viewings.length; i++) {
+        //           tr = table.insertRow(-1);
+
+        //           for (var j = 0; j < col.length; j++) {
+        //             var tabCell = tr.insertCell(-1);
+        //             tabCell.innerHTML = viewings[i][col[j]];
+        //           }
+        //         }
+
+        //         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        //         var divContainer = document.querySelector(".movies");
+        //         divContainer.innerHTML = " ";
+        //         divContainer.appendChild(table);
+      });
   };
   fetch("./pages/dashboard/dashboard.html")
     .then((response) => response.text())

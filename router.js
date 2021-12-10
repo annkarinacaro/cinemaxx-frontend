@@ -2,6 +2,8 @@ import renderMain from "./pages/main/main.js";
 import renderAbout from "./pages/about-us/about-us.js";
 import renderMovie from "./pages/movie/movie.js";
 import renderEdit from "./pages/edit/edit.js";
+import renderDashboard from "./pages/dashboard/dashboard.js";
+
 
 let root = "/";
 if (location.hostname.includes("github")) root = "/cinemaxx-frontend/";
