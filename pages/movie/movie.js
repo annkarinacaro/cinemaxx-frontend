@@ -87,9 +87,8 @@ const setMovieInfo = () => {
 };
 
 const makeAbooking = () => {
-    const email = document.querySelector(".email").innerHTML;
+    const email = document.querySelector(".email").value;
     const seats = getSelectedSeats();
-    console.log(seats);
     const body = {
         viewing: viewingId,
         email: email,
