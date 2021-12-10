@@ -21,5 +21,8 @@ router
         "/edit/": () => {
             renderEdit();
         },
+        "/dashboard/": () => {
+            renderDashboard();
+        },
     })
     .resolve();
