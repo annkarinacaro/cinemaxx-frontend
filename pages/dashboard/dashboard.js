@@ -5,11 +5,6 @@ export default () => {
   let locationDropdown;
   let dateDropdown1;
   let dateDropdown2;
-  fetch("./pages/dashboard/dashboard.html")
-    .then((response) => response.text())
-    .then((html) => {
-      content.innerHTML = html;
-    });
 
   const initLocations = async () => {
     //Get all the locations
@@ -51,7 +46,7 @@ export default () => {
   const initDatesFrom = () => {
     //Reset dates
     while (dateDropdown1.children.length > 0)
-      dateDropdown1.removeChild(dateDropdown.firstChild);
+      dateDropdown1.removeChild(dateDropdown1.firstChild);
     //Add new dates
     for (let i = 0; i < numOfDaysAhead; i++) {
       const date = new Date().addDays(i);
@@ -66,14 +61,14 @@ export default () => {
       dateElement1.classList.add("dropdown-item");
       dateElement1.innerHTML = dateTitle;
       dateElement1.value = parseDate(date);
-      dateDropdown.appendChild(dateElement1);
+      dateDropdown1.appendChild(dateElement1);
     }
   };
 
   const initDatesUntil = () => {
     //Reset dates
     while (dateDropdown2.children.length > 0)
-      dateDropdown2.removeChild(dateDropdown.firstChild);
+      dateDropdown2.removeChild(dateDropdown2.firstChild);
     //Add new dates
     for (let i = 0; i < numOfDaysAhead; i++) {
       const date = new Date().addDays(i);
@@ -88,7 +83,7 @@ export default () => {
       dateElement2.classList.add("dropdown-item");
       dateElement2.innerHTML = dateTitle;
       dateElement2.value = parseDate(date);
-      dateDropdown.appendChild(dateElement2);
+      dateDropdown2.appendChild(dateElement2);
     }
   };
 
@@ -108,25 +103,62 @@ export default () => {
       .then((response) => response.json())
       .then((viewings) => {
         console.log(viewings);
-      });
-  };
 
-  fetch("./pages/main/main.html")
+//         var col = [];
+//         for (var i = 0; i < viewings.length; i++) {
+//           for (var key in viewings[i]) {
+//             if (col.indexOf(key) === -1) {
+//               col.push(key);
+//             }
+//           }
+//         }
+// console.log(col.length);
+//         // CREATE DYNAMIC TABLE.
+//         var table = document.createElement("table");
+
+//         // // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+//          var tr = table.insertRow(-1); // TABLE ROW.
+
+//         for (var i = 0; i < col.length; i++) {
+//           var th = document.createElement("th"); // TABLE HEADER.
+//           th.innerHTML = col[i];
+//           tr.appendChild(th);
+//         }
+
+//         // ADD JSON DATA TO THE TABLE AS ROWS.
+//         for (var i = 0; i < viewings.length; i++) {
+//           tr = table.insertRow(-1);
+
+//           for (var j = 0; j < col.length; j++) {
+//             var tabCell = tr.insertCell(-1);
+//             tabCell.innerHTML = viewings[i][col[j]];
+//           }
+//         }
+
+//         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+//         var divContainer = document.querySelector(".movies");
+//         divContainer.innerHTML = " ";
+//         divContainer.appendChild(table);
+       });
+  };
+  fetch("./pages/dashboard/dashboard.html")
     .then((response) => response.text())
     .then((html) => {
       content.innerHTML = html;
 
       locationDropdown = document.querySelector(".location-dropdown");
-      dateDropdown = document.querySelector(".date-dropdown");
+      dateDropdown1 = document.querySelector(".date-dropdown1");
+      dateDropdown2 = document.querySelector(".date-dropdown2");
 
       initLocations();
       initDatesFrom();
       initDatesUntil();
 
-
-      document.querySelector("button").addEventListener("click", getViewings);
+      //document.querySelector("button").addEventListener("click", getViewings);
       locationDropdown.addEventListener("change", getViewings);
-      dateDropdown.addEventListener("change", getViewings);
+      dateDropdown1.addEventListener("change", getViewings);
+      dateDropdown2.addEventListener("change", getViewings);
     });
 };
 
