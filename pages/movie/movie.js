@@ -55,7 +55,7 @@ const initSeatSelector = () => {
             }
         }
     });
-    const bookingButton = document.querySelector("button");
+    const bookingButton = document.querySelector(".book-button");
     bookingButton.addEventListener("click", makeAbooking);
 };
 
