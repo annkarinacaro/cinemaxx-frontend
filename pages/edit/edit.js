@@ -1,10 +1,13 @@
+import initSeatSelector, {initUpdateButton} from "../../scripts/booking.js"; 
+
+
 export default () => {
     const content = document.querySelector(".content");
     fetch("./pages/edit/edit.html")
         .then((response) => response.text())
         .then((html) => {
             content.innerHTML = html;
-            initBookingButton();
+            initFindBookingButton();
         });
 
     const backendURI = "https://cinema-backend1.herokuapp.com";
@@ -12,7 +15,7 @@ export default () => {
     //DELETE /booking/{id}/?email={email}
     //PUT/ booking /{id}
 
-    const initBookingButton = () => {
+    const initFindBookingButton = () => {
         const bookingButton = document.querySelector(".find-booking-button");
         bookingButton.addEventListener("click", findBookings);
     };
@@ -64,7 +67,11 @@ export default () => {
                     const seatsButtonElement = document.createElement("button");
                     seatsButtonElement.innerHTML = "edit";
                     seatsButtonElement.classList.add("cta");
-                    seatsButtonElement.addEventListener('click', updateSeats)
+                    seatsButtonElement.addEventListener('click', () => {
+                        initSeatSelector(booking.viewing.viewingId);
+                        const overlay = document.querySelector(".overlay");
+                        overlay.classList.remove("hidden");
+                    });
                     seatsTdElement.appendChild(seatsButtonElement);
 
                     const deleteSeatsTdElement = document.createElement("td");
@@ -86,21 +93,7 @@ export default () => {
             });
     };
 
-const updateSeats = () => {
 
-}
-
-    const deleteBooking = () => {
-        const bookingId = this.parentElement.parentElement.dataset.bookingId;
-        console.log(bookingId);
-        fetch(backendURI + "/booking/" + bookingId +"?email=" + email, {
-            method: "DELETE",
-        })
-            .then((response) => response.json())
-            .then((deleteBooking) => {
-                console.log(this.parentElement.remove);
-            });
-    };
 };
 
 function leadingZeroes(num, size) {
