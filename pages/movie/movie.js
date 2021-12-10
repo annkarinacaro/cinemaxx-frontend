@@ -7,8 +7,7 @@ export default (id) => {
         .then((html) => {
             content.innerHTML = html;
             setMovieInfo(id);
-            initSeatSelector(id);
-            initBookingButton();
+            initSeatSelector(id, initBookingButton);
         });
 };
 

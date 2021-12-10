@@ -1,4 +1,4 @@
-import initSeatSelector, {initUpdateButton} from "../../scripts/booking.js"; 
+import initSeatSelector, {initUpdateButton, updateBookingSeats} from "../../scripts/booking.js"; 
 
 
 export default () => {
@@ -8,6 +8,7 @@ export default () => {
         .then((html) => {
             content.innerHTML = html;
             initFindBookingButton();
+        
         });
 
     const backendURI = "https://cinema-backend1.herokuapp.com";
@@ -68,8 +69,9 @@ export default () => {
                     seatsButtonElement.innerHTML = "edit";
                     seatsButtonElement.classList.add("cta");
                     seatsButtonElement.addEventListener('click', () => {
-                        initSeatSelector(booking.viewing.viewingId);
+                        initSeatSelector(booking.viewing.viewingId, () => updateBookingSeats(booking.bookingId));
                         const overlay = document.querySelector(".overlay");
+                        initUpdateButton(email, () => overlay.classList.add("hidden"));
                         overlay.classList.remove("hidden");
                     });
                     seatsTdElement.appendChild(seatsButtonElement);
