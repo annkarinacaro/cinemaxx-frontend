@@ -1,4 +1,4 @@
-//import initLocations, {chooseClosestLocation} from "../main/main.js";
+import { initLocations } from "../main/main.js";
 
 export default () => {
   const content = document.querySelector(".content");
@@ -7,43 +7,6 @@ export default () => {
   let locationDropdown;
   let dateDropdown1;
   let dateDropdown2;
-
-  const initLocations = async () => {
-    //Get all the locations
-    fetch(backendURI + "/locations")
-      .then((response) => response.json())
-      .then((locations) => {
-        //Reset locations
-        while (locationDropdown.children.length > 0)
-          locationDropdown.removeChild(locationDropdown.firstChild);
-        //Add new locations
-        locations.forEach((location) => {
-          let locationElement = document.createElement("option");
-          locationElement.classList.add("dropdown-item");
-          locationElement.innerHTML = location.name;
-          locationElement.dataset.district = location.district;
-          locationElement.value = location.id;
-          locationDropdown.appendChild(locationElement);
-        });
-
-        //Select the cinema closest to the client based on their IP address (if possible)
-        chooseClosestLocation();
-      });
-  };
-
-  const chooseClosestLocation = async () => {
-    //Get client city
-    fetch("http://www.geoplugin.net/json.gp")
-      .then((response) => response.json())
-      .then((geodata) => {
-        Array.from(locationDropdown.children).forEach((location, index) => {
-          //If user city is in the location name
-          if (location.dataset.district.includes(geodata.geoplugin_city)) {
-            location.selectedIndex = index;
-          }
-        });
-      });
-  };
 
   const initDatesFrom = () => {
     //Reset dates
@@ -80,7 +43,6 @@ export default () => {
       } else if (parseDate(date) == parseDate(new Date().addDays(1))) {
         dateTitle = "Tomorrow";
       }
-
       let dateElement2 = document.createElement("option");
       dateElement2.classList.add("dropdown-item");
       dateElement2.innerHTML = dateTitle;
@@ -101,6 +63,7 @@ export default () => {
       selectedDate1 +
       "&end_date=" +
       selectedDate2;
+
     fetch(viewingsUrl)
       .then((response) => response.json())
       .then((viewings) => {
@@ -110,17 +73,20 @@ export default () => {
   };
 
   function createTable(viewingData) {
-    var table = document.getElementById("admin-table");
+    let table = document.querySelector(".admin-table");
+    while (table.firstElementChild.children.length > 1) {
+      table.firstElementChild.removeChild(table.firstElementChild.lastChild);
+    }
 
     viewingData.forEach((viewing) => {
-      var row = table.insertRow(-1);
+      let row = table.insertRow(-1);
 
       // Insert new cells:
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      var cell5 = row.insertCell(4);
+      let cell1 = row.insertCell(0);
+      let cell2 = row.insertCell(1);
+      let cell3 = row.insertCell(2);
+      let cell4 = row.insertCell(3);
+      let cell5 = row.insertCell(4);
 
       // Add text to the new cells:
       cell1.innerHTML = viewing.viewingId;
@@ -186,7 +152,7 @@ export default () => {
       dateDropdown2 = document.querySelector(".date-dropdown2");
 
       //import {initLocations} from 'main';
-      initLocations();
+      initLocations(false);
       initDatesFrom();
       initDatesUntil();
 
@@ -198,7 +164,7 @@ export default () => {
 };
 
 Date.prototype.addDays = function (days) {
-  var date = new Date(this.valueOf());
+  let date = new Date(this.valueOf());
   date.setDate(date.getDate() + days);
   return date;
 };

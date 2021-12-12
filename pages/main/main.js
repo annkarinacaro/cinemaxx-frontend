@@ -1,49 +1,53 @@
-export default () => {
-    const content = document.querySelector(".content");
-    const backendURI = "https://cinema-backend1.herokuapp.com";
-    const numOfDaysAhead = 30; //How many days ahead of today should be possible to book
-    let locationDropdown;
-    let dateDropdown;
+const content = document.querySelector(".content");
+const backendURI = "https://cinema-backend1.herokuapp.com";
+const numOfDaysAhead = 30; //How many days ahead of today should be possible to book
+let locationDropdown;
+let dateDropdown;
 
-    function initLocations() {
-        //Get all the locations
-        return fetch(backendURI + "/locations")
-            .then(response => response.json())
-            .then(locations => {
-                //Reset locations
-                while(locationDropdown.children.length > 0) locationDropdown.removeChild(locationDropdown.firstChild);
-                //Add new locations
-                locations.forEach(location => {
-                    let locationElement = document.createElement("option");
-                    locationElement.classList.add("dropdown-item");
-                    locationElement.innerHTML = location.name;
-                    locationElement.dataset.district = location.district;
-                    locationElement.value = location.id;
-                    locationDropdown.appendChild(locationElement);
-                });
+export function initLocations(shouldGetViewings = true) {
+    locationDropdown = document.querySelector(".location-dropdown");
 
-                //Select the cinema closest to the client based on their IP address (if possible)
-                chooseClosestLocation();
-
-                getViewings();
-
+    //Get all the locations
+    return fetch(backendURI + "/locations")
+        .then(response => response.json())
+        .then(locations => {
+            //Reset locations
+            while(locationDropdown.children.length > 0) locationDropdown.removeChild(locationDropdown.firstChild);
+            //Add new locations
+            locations.forEach(location => {
+                let locationElement = document.createElement("option");
+                locationElement.classList.add("dropdown-item");
+                locationElement.innerHTML = location.name;
+                locationElement.dataset.district = location.district;
+                locationElement.value = location.id;
+                locationDropdown.appendChild(locationElement);
             });
-    }
 
-    function chooseClosestLocation(){
-        //Get client city
-        return fetch("http://www.geoplugin.net/json.gp")
-            .then((response) => response.json())
-            .then((geodata) => {
-                Array.from(locationDropdown.children).forEach((location, index) => {
-                    //If user city is in the location name
-                    if(location.dataset.district.includes(geodata.geoplugin_city)){
-                        location.selectedIndex = index;
-                    }
-                });
-            });        
-    };
+            //Select the cinema closest to the client based on their IP address (if possible)
+            chooseClosestLocation();
 
+            if (shouldGetViewings) {
+                getViewings();
+            }
+
+        });
+}
+
+export function chooseClosestLocation(){
+    //Get client city
+    return fetch("http://www.geoplugin.net/json.gp")
+        .then((response) => response.json())
+        .then((geodata) => {
+            Array.from(locationDropdown.children).forEach((location, index) => {
+                //If user city is in the location name
+                if(location.dataset.district.includes(geodata.geoplugin_city)){
+                    location.selectedIndex = index;
+                }
+            });
+        });        
+};
+
+export default () => {
     function initDates(){
         //Reset dates
         while(dateDropdown.children.length > 0) dateDropdown.removeChild(dateDropdown.firstChild);
