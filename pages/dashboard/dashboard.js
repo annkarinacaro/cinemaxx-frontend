@@ -1,3 +1,5 @@
+//import initLocations, {chooseClosestLocation} from "../main/main.js";
+
 export default () => {
   const content = document.querySelector(".content");
   const backendURI = "https://cinema-backend1.herokuapp.com";
@@ -103,47 +105,77 @@ export default () => {
       .then((response) => response.json())
       .then((viewings) => {
         console.log(viewings);
-
-        var table = document.getElementById("admin-table");
-
-        for (var i = 0; i < viewings.length; i++) {
-
-        var row = table.insertRow(-1);
-
-        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-
-
-        // Add some text to the new cells:
-        cell1.innerHTML = viewings[i].viewingId;
-        cell2.innerHTML = viewings[i].movie.title;
-        cell3.innerHTML = viewings[i].dateTime;
-        cell4.innerHTML = "EDIT";
-        cell5.innerHTML = "DELETE";
-
-        // console.log(col.length);
-        }
-
-        //         // ADD JSON DATA TO THE TABLE AS ROWS.
-        //         for (var i = 0; i < viewings.length; i++) {
-        //           tr = table.insertRow(-1);
-
-        //           for (var j = 0; j < col.length; j++) {
-        //             var tabCell = tr.insertCell(-1);
-        //             tabCell.innerHTML = viewings[i][col[j]];
-        //           }
-        //         }
-
-        //         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        //         var divContainer = document.querySelector(".movies");
-        //         divContainer.innerHTML = " ";
-        //         divContainer.appendChild(table);
+        createTable(viewings);
       });
   };
+
+  function createTable(viewingData) {
+    var table = document.getElementById("admin-table");
+
+    viewingData.forEach((viewing) => {
+      var row = table.insertRow(-1);
+
+      // Insert new cells:
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+
+      // Add text to the new cells:
+      cell1.innerHTML = viewing.viewingId;
+      cell2.innerHTML = viewing.movie.title;
+      const time = new Date(viewing.dateTime);
+
+      cell3.innerHTML =
+        parseDate(time) +
+        " " +
+        (time.getHours() - 1) +
+        ":" +
+        leadingZeroes(time.getMinutes(), 2);
+
+      // Create the Edit button
+      const editBtn = document.createElement("button");
+      editBtn.innerHTML = "EDIT";
+      cell4.appendChild(editBtn);
+
+      editBtn.addEventListener("click", () => {
+        const inputDate = prompt("Enter a new date", "2021-12-23 14:00");
+        const body = {
+          dateTime: inputDate,
+        };
+        fetch(backendURI + "/viewing/" + viewing.viewingId, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        })
+          .then((response) => response.text())
+          .then((viewing) => {
+            console.log(inputDate);
+            console.log("edited viewing: ", viewing);
+            cell3.innerHTML = inputDate;
+          });
+      });
+
+      // Create the Delete button
+      const deleteBtn = document.createElement("button");
+      deleteBtn.innerHTML = "DELETE";
+      cell5.appendChild(deleteBtn);
+
+      deleteBtn.addEventListener("click", () => {
+        fetch(backendURI + "/viewing/" + viewing.viewingId, {
+          method: "DELETE",
+        })
+          .then((response) => response.text())
+          .then(() => {
+            table.querySelector("tbody").removeChild(row);
+          });
+      });
+    });
+  }
+
   fetch("./pages/dashboard/dashboard.html")
     .then((response) => response.text())
     .then((html) => {
@@ -153,6 +185,7 @@ export default () => {
       dateDropdown1 = document.querySelector(".date-dropdown1");
       dateDropdown2 = document.querySelector(".date-dropdown2");
 
+      //import {initLocations} from 'main';
       initLocations();
       initDatesFrom();
       initDatesUntil();
@@ -171,3 +204,9 @@ Date.prototype.addDays = function (days) {
 };
 
 const parseDate = (date) => date.toISOString().split("T")[0];
+
+function leadingZeroes(num, size) {
+  num = num.toString();
+  while (num.length < size) num = "0" + num;
+  return num;
+}

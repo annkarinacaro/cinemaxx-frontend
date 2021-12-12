@@ -1,0 +1,45 @@
+.bookings-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.bookings-table td,
+.bookings-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.bookings-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.bookings-table tr:hover {
+    background-color: #ddd;
+}
+
+.bookings-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #364fc2;
+    color: white;
+}
+
+.overlay {
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.315);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+  display: none;
+}
