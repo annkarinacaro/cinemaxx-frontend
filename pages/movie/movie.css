@@ -51,4 +51,46 @@ img {
     border: 10px solid #E3AFBC;
     border-radius: 8px;
     width: 300px;
+
+  }
+
+  .header {
+    height: min-content;
+    width: 100%;
+    max-height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(31, 34, 199);
+    position: absolute;
+    z-index: 10;
+}
+
+.header > div {
+    display: inline;
+}
+
+.header > div > * {
+    margin-left: 15px;
+    display: inline;
+}
+
+.logo {
+    color: rgb(235, 235, 227);
+    font-size: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.movies {
+    padding: 100px 10px;
+    position: relative;
+}
+
+.sub-text-logo {
+    font-size: 15px;
+    color: white;
+    font-style: italic;
+    font-weight: 500;
 }
