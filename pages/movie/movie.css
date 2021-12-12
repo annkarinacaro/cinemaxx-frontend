@@ -152,9 +152,11 @@ img {
 
 .movie-screen {
     width: 100%;
-    height: 20px;
+    height: auto;
     background-color: #0c0c0c;
     color: white;
     text-align: center;
-    border-radius: ;
+    border-radius: 200px 200px 0px 0px;
+    margin-top: 15px;
+    padding: 5px;
 }
