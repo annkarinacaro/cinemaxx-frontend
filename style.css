@@ -1,32 +1,102 @@
-*,*::before, *::after{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-body{
-    overflow-x: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.header {
+  height: min-content;
+  width: 100%;
+  max-height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgb(31, 34, 199);
+  position: absolute;
+  z-index: 10;
 }
 
-.cta{
-    border-radius: 25px;
-    padding: 5px 15px;
-    border: solid 2px transparent;
-    background-color:rgb(31, 34, 199);
-    color: white;
-    font-weight: 600;
+.header > div {
+  display: inline;
+}
+
+.header > div > * {
+  margin-left: 15px;
+  display: inline;
+}
+
+.logo {
+  color: rgb(235, 235, 227);
+  font-size: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.sub-text-logo {
     font-size: 15px;
+    color: white;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(95, 147, 224);
+  color: white;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cta {
+  border-radius: 25px;
+  padding: 5px 15px;
+  border: solid 2px transparent;
+  background-color: rgb(31, 34, 199);
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 tr .cta {
-    opacity: 0;
+  opacity: 0;
 }
 
 tr:hover .cta {
     opacity: 1;
+}
+
+.movies {
+    padding: 100px 10px;
+    position: relative;
 }
