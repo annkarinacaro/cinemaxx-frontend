@@ -47,6 +47,20 @@ export function chooseClosestLocation(){
 };
 
 export default () => {
+    const content = document.querySelector(".content");
+    const backendURI = "https://cinema-backend1.herokuapp.com";
+    const numOfDaysAhead = 30; //How many days ahead of today should be possible to book
+    let locationDropdown;
+    let dateDropdown;
+
+    function initButtons() {
+        const aboutLink = document.querySelector(".about-redirect");
+        const editLink = document.querySelector(".edit-redirect");
+
+        aboutLink.addEventListener("click", () => window.location.href = "./#/about");
+        editLink.addEventListener("click", () => window.location.href = "./#/edit");
+    }
+
     function initDates(){
         //Reset dates
         while(dateDropdown.children.length > 0) dateDropdown.removeChild(dateDropdown.firstChild);
