@@ -115,7 +115,7 @@ const getViewings = () => {
                 durationElement.classList.add("duration");
                 movieElement.appendChild(durationElement);
 
-                const buttonElement = document.createElement("cta");
+                const buttonElement = document.createElement("button");
                 buttonElement.addEventListener("click", () => window.location.href = "./#/movie/" + viewing.viewingId);
                 buttonElement.innerHTML = "SEE MORE";
                 buttonElement.classList.add("cta");
