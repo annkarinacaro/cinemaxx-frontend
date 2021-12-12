@@ -1,3 +1,15 @@
+.inner-content {
+    display: flex;
+    width: 60%;
+    background-color: rgb(243, 243, 243);
+    height: max-content;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 100px;
+}
+
 .seat-selector {
     margin: 5px;
     padding: 5px;
@@ -29,16 +41,14 @@
     background-color: rgb(211, 89, 89);
 }
 
-.column {
+/* .column {
     width:200px;
     height:170x;
     margin-right:30px;
-  }
+} */
 
-
-  img {
+img {
     border: 10px solid #E3AFBC;
     border-radius: 8px;
     width: 300px;
-
-  }
+}
