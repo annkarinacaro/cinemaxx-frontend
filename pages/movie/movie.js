@@ -24,7 +24,7 @@ const setMovieInfo = (viewingId) => {
             const movieDate = new Date(viewing.dateTime);
             console.log(viewing.dateTime);
             const movieTime = movieDate.getHours() + ":" + leadingZeroes(movieDate.getMinutes(), 2) + " " + movieDate.toISOString().split('T')[0];
-            movieTitle.innerHTML = "<span class='movie-time'>" + movieTime + "</span> " + viewing.movie.title ;
+            movieTitle.innerHTML = "<span class='movie-time'>" + movieTime + "</span> <br>" + viewing.movie.title ;
             movieDescription.innerHTML = viewing.movie.description + "<br><br> Cast: " + viewing.movie.actors + "<br><br> Running time: " + viewing.movie.duration + "<br><br> Age requirement: " + viewing.movie.ageRequirement;
             movieRating.innerHTML = viewing.movie.rating + "/10 IMDb";
             imagePoster.src = viewing.movie.poster;
