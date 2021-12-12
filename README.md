@@ -1,18 +1,21 @@
 # cinemaxx-frontend
-final project for programming, frontend 3rd semester 
+Final project for programming, frontend 3rd semester 
 
-•	 A link to your github repos :
+•	 A link to your github repos:
 
-https://github.com/annkarinacaro/cinemaxx-frontend
+  https://github.com/annkarinacaro/cinemaxx-frontend
 
-https://github.com/aist0093/Cinema
+  https://github.com/aist0093/Cinema
 
-•	 A link to your hosted frontend
-https://cinemaxx.surge.sh
+•	 A link to your hosted frontend:
+  https://cinemaxx.surge.sh
 
 
-•	 A link to your hosted backend : 
-https://cinema-backend1.herokuapp.com
+•	 A link to your hosted backend: 
+  https://cinema-backend1.herokuapp.com
+
+• A link to our YouTube video:
+  https://youtu.be/-6VcoMmfPz8
 
 Pages:
 •	Landing page - shows a list of movies on a selected date at one of the cinemas. The software finds the cinema at the same district as the client and picks that as default. User can then click on one of the showings of the movies so see more info about them.
