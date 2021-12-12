@@ -1,3 +1,7 @@
+//
+// JUSTAS & ANA
+//
+
 import initSeatSelector, { initBookingButton } from "../../scripts/booking.js";
 
 export default (id) => {

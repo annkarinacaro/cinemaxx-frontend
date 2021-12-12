@@ -1,3 +1,7 @@
+//
+// JUSTAS & ANA
+//
+
 const backendURI = "https://cinema-backend1.herokuapp.com";
 let viewingId;
 let bookingId;

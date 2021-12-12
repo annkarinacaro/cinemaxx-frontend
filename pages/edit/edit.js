@@ -1,3 +1,7 @@
+//
+// ANA
+//
+
 import initSeatSelector, {
   initUpdateButton,
   updateBookingSeats,

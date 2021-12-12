@@ -1,3 +1,7 @@
+//
+// JUSTAS & ANA & AISTE
+//
+
 import renderMain from "./pages/main/main.js";
 import renderAbout from "./pages/about-us/about-us.js";
 import renderMovie from "./pages/movie/movie.js";
