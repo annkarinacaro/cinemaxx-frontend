@@ -14,16 +14,16 @@ router
         "/": () => {
             renderMain();
         },
-        "/about/": () => {
+        "/about": () => {
             renderAbout();
         },
-        "/movie/:id/": ({ data }) => {
+        "/movie/:id": ({ data }) => {
             renderMovie(data.id);
         },
-        "/edit/": () => {
+        "/edit": () => {
             renderEdit();
         },
-        "/dashboard/": () => {
+        "/dashboard": () => {
             renderDashboard();
         },
     })

@@ -1,8 +1,9 @@
 body {
-  position: relative;
+    position: relative;
 }
 
 .movies {
-  padding: 100px 10px;
-  position: relative;
+    padding: 100px 10px;
+    position: relative;
+    min-height: 100vh;
 }
