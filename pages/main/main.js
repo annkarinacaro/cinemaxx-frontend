@@ -50,12 +50,14 @@ export function chooseClosestLocation() {
 function initButtons() {
   const aboutLink = document.querySelector(".about-redirect");
   const editLink = document.querySelector(".edit-redirect");
+  const dashLink = document.querySelector(".dashboard-redirect");
 
   aboutLink.addEventListener(
     "click",
     () => (window.location.href = "./#/about")
   );
   editLink.addEventListener("click", () => (window.location.href = "./#/edit"));
+  dashLink.addEventListener("click", () => (window.location.href = "./#/dashboard"));
 }
 
 function initDates() {
