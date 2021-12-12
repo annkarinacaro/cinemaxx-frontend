@@ -6,17 +6,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/pages/movie/movie.css" />
         <link rel="stylesheet" href="./pages/edit/edit.css">
+        <link rel="stylesheet" href="./style.css">
         <title>This is the edit page</title>
     </head>
     <body>
+        <div class="header">
+            <div>
+              <h3 class="logo">
+                CinemaXX
+                <span class="sub-text-logo">Edit page</span>
+              </h3>
+            </div>
+            </div>
+
+            <div class="movies">
         <div class="overlay hidden">
             <div class="seat-selector"></div>
-            <button class="update-button">Update</button>   
+            <button class="update-button cta">Update</button>   
         </div>
         <form>
-            <label for="email">Enter your email:</label>
+            <label for="email" class="email-font" >Enter your email:</label>
             <input type="email" class="email" />
-            <button class="find-booking-button">Find Bookings</button>
+            <button class="find-booking-button cta">Find Bookings</button>
         </form>
         <h1>Current Bookings</h1>
         <table class="bookings-table">
@@ -29,5 +40,6 @@
             </tr>
 
         </table>
+        </div>
     </body>
 </html>

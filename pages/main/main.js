@@ -126,6 +126,7 @@ export default () => {
         locationDropdown = document.querySelector(".location-dropdown");
         dateDropdown = document.querySelector(".date-dropdown");
 
+        initButtons();
         initLocations();
         initDates();
 
