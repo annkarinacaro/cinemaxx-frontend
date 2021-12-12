@@ -33,28 +33,27 @@ body {
   padding: 100px 10px;
   position: relative;
 }
-
-#admin-table {
+.admin-table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#admin-table td,
-#admin-table th {
+.admin-table td,
+.admin-table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#admin-table tr:nth-child(even) {
+.admin-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-#admin-table tr:hover {
+.admin-table tr:hover {
   background-color: #ddd;
 }
 
-#admin-table th {
+.admin-table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
