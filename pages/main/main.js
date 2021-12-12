@@ -5,6 +5,14 @@ export default () => {
     let locationDropdown;
     let dateDropdown;
 
+    function initButtons() {
+        const aboutLink = document.querySelector(".about-redirect");
+        const editLink = document.querySelector(".edit-redirect");
+
+        aboutLink.addEventListener("click", () => window.location.href = "./#/about");
+        editLink.addEventListener("click", () => window.location.href = "./#/edit");
+    }
+
     function initLocations() {
         //Get all the locations
         return fetch(backendURI + "/locations")
@@ -122,6 +130,7 @@ export default () => {
         locationDropdown = document.querySelector(".location-dropdown");
         dateDropdown = document.querySelector(".date-dropdown");
 
+        initButtons();
         initLocations();
         initDates();
 
