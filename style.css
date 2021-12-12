@@ -10,6 +10,10 @@ html {
   scroll-behavior: smooth;
 }
 
+a:link {
+  text-decoration: none;
+}
+
 .header {
   height: min-content;
   width: 100%;
@@ -40,11 +44,11 @@ html {
   font-weight: 600 !important;
 }
 .sub-text-logo {
-    font-size: 15px;
-    color: white;
-    font-style: italic;
-    font-weight: 500;
-  }
+  font-size: 15px;
+  color: white;
+  font-style: italic;
+  font-weight: 500;
+}
 
 table {
   font-family: Arial, Helvetica, sans-serif;
@@ -94,10 +98,10 @@ tr .cta {
 }
 
 tr:hover .cta {
-    opacity: 1;
+  opacity: 1;
 }
 
 .movies {
-    padding: 100px 10px;
-    position: relative;
+  padding: 100px 10px;
+  position: relative;
 }

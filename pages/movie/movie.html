@@ -1,53 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/pages/movie/movie.css" />
-        <link rel="stylesheet" href="/style.css" />
-        <link rel="stylesheet" href="./style.css" />
-      
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/pages/movie/movie.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="./style.css" />
 
-        <title>Movie</title>
-    </head>
-    <body>
-        <div class="header">
-            <div>
-                <h3 class="logo">
-                    CinemaXX
-                    <span class="sub-text-logo">Booking's page</span>
-                </h3>
-            </div>
+    <title>Movie</title>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <a class="logo" href="/">
+          CinemaXX
+          <span class="sub-text-logo">Booking's page</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="inner-content">
+      <h2 class="left-align">Movie info</h2>
+      <div class="movie-block block row">
+        <img src="" class="movie-poster" />
+        <div class="movie-info">
+          <h1 class="movie-title"></h1>
+          <p class="movie-rating"></p>
+          <p class="movie-description"></p>
         </div>
-
-        <div class="inner-content">
-            <h2 class="left-align">Movie info</h2>
-            <div class="movie-block block row">
-                <img src="" class="movie-poster" />
-                <div class="movie-info">
-                    <h1 class="movie-title"></h1>
-                    <p class="movie-rating"></p>
-                    <p class="movie-description"></p>
-
-                </div>
-            </div>
-            <h2 class="left-align top-spacing">Book time</h2>
-            <div class="booking-block block">
-                <div class="seat-selector"></div>    
-                <form>
-                    <label for="email">Enter your email:</label>
-                    <input type="email" class="email" required/>
-                    <br>
-                    <button class="book-button cta">Book now</button>
-                </form>
-            </div>
-        </div>
-        <footer class="bg-light text-center text-lg-start">
-            <div class="text-center p-3 text-dark">
-                © 2021 Copyright:
-                <a class="text-dark" href="#">JAA.dk</a>
-            </div>
-        </footer>
-    </body>
+      </div>
+      <h2 class="left-align top-spacing">Book time</h2>
+      <div class="booking-block block">
+        <div class="seat-selector"></div>
+        <form>
+          <label for="email">Enter your email:</label>
+          <input type="email" class="email" required />
+          <br />
+          <button class="book-button cta">Book now</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

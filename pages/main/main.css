@@ -1,6 +1,6 @@
 body {
   position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header {
@@ -8,8 +8,7 @@ body {
 }
 
 .logo {
-  color:rgb(31, 34, 199);
- 
+  color: rgb(31, 34, 199);
 }
 
 /* MOVIES */
