@@ -1,6 +1,6 @@
 body {
   position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header {
@@ -8,7 +8,7 @@ body {
 }
 
 .logo {
-  color:rgb(31, 34, 199);
+  color: rgb(31, 34, 199);
 }
 
 /* MOVIES */
@@ -44,16 +44,4 @@ body {
 
 .movie > .title {
   font-size: 30px;
-}
-
-.cta {
-  background-color: blueviolet;
-  border-radius: 5px;
-  padding: 5px 15px;
-  font-size: 20px;
-  border: none;
-  color: white;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
