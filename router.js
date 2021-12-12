@@ -12,6 +12,7 @@ router
   .on({
     "/": () => {
       renderMain();
+      router.updatePageLinks();
     },
     "/about": () => {
       renderAbout();
