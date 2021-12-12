@@ -93,8 +93,9 @@ tr .cta {
 }
 
 tr:hover .cta {
-  opacity: 1;
+    opacity: 1;
 }
+
 .movies {
     padding: 100px 10px;
     position: relative;
