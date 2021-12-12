@@ -8,22 +8,22 @@ import renderDashboard from "./pages/dashboard/dashboard.js";
 let root = "/";
 if (location.hostname.includes("github")) root = "/cinemaxx-frontend/";
 
-const router = new Navigo("/cinemaxx-frontend/", { hash: true });
+const router = new Navigo(root, { hash: true });
 router
     .on({
         "/": () => {
             renderMain();
         },
-        "/about": () => {
+        "about": () => {
             renderAbout();
         },
-        "/movie/:id": ({ data }) => {
+        "/movie/:id/": ({ data }) => {
             renderMovie(data.id);
         },
-        "/edit": () => {
+        "edit": () => {
             renderEdit();
         },
-        "/dashboard": () => {
+        "dashboard": () => {
             renderDashboard();
         },
     })
