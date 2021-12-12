@@ -61,3 +61,10 @@ body {
   background-color: #364fc2;
   color: white;
 }
+
+.sub-text-logo {
+  font-size: 15px;
+  color: white;
+  font-style: italic;
+  font-weight: 500;
+}

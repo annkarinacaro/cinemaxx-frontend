@@ -106,7 +106,7 @@ export default () => {
                     movieElement.appendChild(durationElement);
 
                     const buttonElement = document.createElement("cta");
-                    buttonElement.addEventListener("click", () => window.location.href = "/#/movie/" + viewing.viewingId);
+                    buttonElement.addEventListener("click", () => window.location.href = "./#/movie/" + viewing.viewingId);
                     buttonElement.innerHTML = "SEE MORE";
                     buttonElement.classList.add("cta");
                     movieElement.appendChild(buttonElement);
