@@ -1,3 +1,7 @@
+//
+// JUSTAS
+//
+
 const content = document.querySelector(".content");
 const backendURI = "https://cinema-backend1.herokuapp.com";
 const numOfDaysAhead = 30; //How many days ahead of today should be possible to book

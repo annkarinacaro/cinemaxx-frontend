@@ -1,3 +1,6 @@
+//
+// AISTE
+//
 export default () => {
   const content = document.querySelector(".content");
   fetch("./pages/about-us/about-us.html")

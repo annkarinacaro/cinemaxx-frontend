@@ -1,3 +1,7 @@
+//
+// AISTE
+//
+
 import { initLocations } from "../main/main.js";
 
 export default () => {
