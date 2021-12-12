@@ -130,16 +130,15 @@ function makeBooking() {
         seats: seats,
     };
 
-    fetch(backendURI + "/booking", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-    })
+    if(email.includes("@", ".") && seats.length > 0){
+        fetch(backendURI + "/booking", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+        })
         .then((response) => response.json())
-        .then((booking) => {
-            location.reload();
-            console.log("amaze: ", booking);
-        });
+        .then(() => location.reload());
+    }
 }

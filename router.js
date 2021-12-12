@@ -12,6 +12,7 @@ const router = new Navigo(root, { hash: true });
 router
     .on({
         "/": () => {
+            console.log(location.href);
             renderMain();
         },
         "/about": () => {
