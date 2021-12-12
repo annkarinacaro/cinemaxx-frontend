@@ -7,8 +7,7 @@ import renderDashboard from "./pages/dashboard/dashboard.js";
 
 let root = "/";
 if (location.origin.includes("github")) root = "/cinemaxx-frontend/";
-console.log(root);
-const router = new Navigo(null, { hash: true });
+const router = new Navigo(root, { hash: true });
 router
     .on({
         "/": () => {
