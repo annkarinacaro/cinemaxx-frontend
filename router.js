@@ -4,28 +4,29 @@ import renderMovie from "./pages/movie/movie.js";
 import renderEdit from "./pages/edit/edit.js";
 import renderDashboard from "./pages/dashboard/dashboard.js";
 
+
 let root = "/";
 if (location.origin.includes("github")) root = "/cinemaxx-frontend/";
-console.log(root);
-const router = new Navigo(null, { hash: true });
+const router = new Navigo(root, { hash: true });
+
+document.querySelector("button").addEventListener("click", () => console.log(router.routes));
 router
-  .on({
-    "/": () => {
-      renderMain();
-      router.updatePageLinks();
-    },
-    "/about": () => {
-      renderAbout();
-    },
-    "/movie/:id": ({ data }) => {
-      renderMovie(data.id);
-    },
-    "/edit": () => {
-      renderEdit();
-    },
-    // :)
-    "/dashboard": () => {
-      renderDashboard();
-    },
-  })
-  .resolve();
+    .on({
+        "/": () => {
+            renderMain();
+            router.updatePageLinks();
+        },
+        "/about": () => {
+            renderAbout();
+        },
+        "/movie/:id/": ({ data }) => {
+            renderMovie(data.id);
+        },
+        "/edit": () => {
+            renderEdit();
+        },
+        "/dashboard": () => {
+            renderDashboard();
+        },
+    })
+    .resolve();
