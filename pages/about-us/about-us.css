@@ -2,8 +2,8 @@ body {
   font: 400 15px/1.8 Lato, sans-serif;
   color: #777;
 }
-.big-text{
-    font-size: 20px;
+.big-text {
+  font-size: 20px;
 }
 h3,
 h2 {
@@ -13,7 +13,7 @@ h2 {
   color: #111;
 }
 .container {
-  padding: 100px;
+  padding: 150px 100px 1px;
 }
 .person {
   border: 10px solid transparent;
@@ -39,7 +39,6 @@ h2 {
 .bg-1 p {
   font-style: italic;
 }
-
 
 .form-control {
   border-radius: 0;
