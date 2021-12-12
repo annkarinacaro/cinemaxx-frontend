@@ -26,7 +26,8 @@ export default function initSeatSelector(id, onSuccess) {
     const seatSelector = document.querySelector(".seat-selector");
     viewingId = id;
     getSeats((seatInfo) => {
-        while(seatSelector.children.length > 0) seatSelector.removeChild(seatSelector.firstChild);
+        while (seatSelector.children.length > 0)
+            seatSelector.removeChild(seatSelector.firstChild);
         const rowLength = seatInfo.dimensions.rows;
         const seatLength = seatInfo.dimensions.seats;
         const bookedSeats = seatInfo.seats;
@@ -60,11 +61,12 @@ export function updateBookingSeats(id) {
     const seatSelector = document.querySelector(".seat-selector");
     bookingId = id;
     getBookingSeats((seatInfo) => {
-        seatInfo.seats.forEach(seat => {
-           const seatElement = seatSelector.querySelectorAll(".row")[seat.row]
-           .querySelectorAll(".seat")[seat.seat];
-           seatElement.classList.remove("booked");
-           seatElement.classList.add("selected");
+        seatInfo.seats.forEach((seat) => {
+            const seatElement = seatSelector
+                .querySelectorAll(".row")
+                [seat.row].querySelectorAll(".seat")[seat.seat];
+            seatElement.classList.remove("booked");
+            seatElement.classList.add("selected");
         });
     });
 }
@@ -92,7 +94,7 @@ function getSelectedSeats() {
     return jsonSeats;
 }
 
-function putBooking(email, onSuccess){
+function putBooking(email, onSuccess) {
     const seats = getSelectedSeats();
     const body = {
         viewing: viewingId,
@@ -131,6 +133,7 @@ function makeBooking() {
     })
         .then((response) => response.json())
         .then((booking) => {
+            location.reload();
             console.log("amaze: ", booking);
         });
 }
