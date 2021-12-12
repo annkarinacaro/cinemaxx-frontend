@@ -1,6 +1,7 @@
 .inner-content {
     display: flex;
     width: 60%;
+    min-width: 800px;
     background-color: rgb(243, 243, 243);
     height: max-content;
     flex-direction: column;
@@ -8,6 +9,37 @@
     margin-left: auto;
     margin-right: auto;
     padding: 20px 100px;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.block.row {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.booking-block {
+    margin-top: 100px;
+}
+
+.left-align {
+    align-self: flex-start;
+}
+
+.movie-info {
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: inherit !important;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: 5px;
+    padding: 0px 10px;
 }
 
 .seat-selector {
@@ -48,9 +80,9 @@
 } */
 
 img {
-    border: 10px solid #E3AFBC;
+    border: 2px solid rgb(31, 34, 199);
     border-radius: 8px;
-    width: 300px;
+    max-width: 500px;
 
   }
 
@@ -64,7 +96,7 @@ img {
     align-items: center;
     padding: 20px;
     background-color: rgb(31, 34, 199);
-    position: absolute;
+    position: relative;
     z-index: 10;
 }
 

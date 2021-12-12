@@ -17,13 +17,14 @@ const setMovieInfo = (viewingId) => {
     fetch(backendURI + "/viewing/" + viewingId)
         .then((response) => response.json())
         .then((viewing) => {
-            let movieTitle = document.querySelector("h2.movie-title");
-            let movieDescription = document.querySelector(
-                "p.movie-description"
-            );
+            let movieTitle = document.querySelector(".movie-title");
+            let movieDescription = document.querySelector(".movie-description");
+            let movieRating = document.querySelector(".movie-rating");
             let imagePoster = document.querySelector("img.movie-poster");
             movieTitle.innerHTML = viewing.movie.title;
             movieDescription.innerHTML = viewing.movie.description;
+            console.log(viewing);
+            movieRating.innerHTML = viewing.movie.rating;
             imagePoster.src = viewing.movie.poster;
         });
 };

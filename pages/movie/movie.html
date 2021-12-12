@@ -5,8 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/pages/movie/movie.css" />
+        <link rel="stylesheet" href="/style.css" />
 
-        <title>Movie's page</title>
+        <title>Movie</title>
     </head>
     <body>
         <div class="header">
@@ -19,17 +20,23 @@
         </div>
 
         <div class="inner-content">
-            <h1>Movie page</h1>
-            <h2>Movie info</h2>
-            <img src="" class="movie-poster" />
-            <h2 class="movie-title"></h2>
-            <p class="movie-description"></p>
+            <h2 class="left-align">Movie info</h2>
+            <div class="movie-block block row">
+                <img src="" class="movie-poster" />
+                <div class="movie-info">
+                    <h1 class="movie-title"></h1>
+                    <p class="movie-rating"></p>
+                    <p class="movie-description"></p>
 
-            <div class="seat-selector"></div>    
-            <label for="email">Enter your email:</label>
-            <input type="email" class="email" />
-            <br />
-            <button class="book-button">Book</button>
+                </div>
+            </div>
+            <div class="booking-block block">
+                <div class="seat-selector"></div>    
+                <label for="email">Enter your email:</label>
+                <input type="email" class="email" />
+                <br />
+                <button class="book-button">Book</button>
+            </div>
         </div>
     </body>
 </html>
