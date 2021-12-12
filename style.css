@@ -12,3 +12,21 @@ body{
     overflow-x: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.cta{
+    border-radius: 25px;
+    padding: 5px 15px;
+    border: solid 2px transparent;
+    background-color:rgb(31, 34, 199);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+tr .cta {
+    opacity: 0;
+}
+
+tr:hover .cta {
+    opacity: 1;
+}
