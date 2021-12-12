@@ -6,15 +6,15 @@ import renderDashboard from "./pages/dashboard/dashboard.js";
 
 
 let root = "/";
-if (location.origin.includes("github")) root = "/cinemaxx-frontend/";
-const router = new Navigo("", { hash: true });
+// if (location.origin.includes("github")) root = "/cinemaxx-frontend/";
+const router = new Navigo("/", { hash: true });
 
 document.querySelector("button").addEventListener("click", () => console.log(router.routes));
 router
     .on({
-        root: () => {
+        "/": () => {
             renderMain();
-            router.updatePageLinks();
+            // router.updatePageLinks();
         },
         "/about": () => {
             renderAbout();
