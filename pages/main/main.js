@@ -29,7 +29,6 @@ export function initLocations(shouldGetViewings = true) {
             if (shouldGetViewings) {
                 getViewings();
             }
-
         });
 }
 
