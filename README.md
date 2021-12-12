@@ -8,7 +8,7 @@ https://github.com/annkarinacaro/cinemaxx-frontend
 https://github.com/aist0093/Cinema
 
 •	 A link to your hosted frontend
-https://annkarinacaro.github.io/cinemaxx-frontend
+https://cinemaxx.surge.sh
 
 
 •	 A link to your hosted backend : 
