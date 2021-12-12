@@ -37,6 +37,7 @@ html {
   color: rgb(235, 235, 227);
   font-size: 40px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600 !important;
 }
 .sub-text-logo {
     font-size: 15px;
