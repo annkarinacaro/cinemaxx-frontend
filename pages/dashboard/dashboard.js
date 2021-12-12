@@ -103,6 +103,7 @@ export default () => {
       // Create the Edit button
       const editBtn = document.createElement("button");
       editBtn.innerHTML = "EDIT";
+      editBtn.classList.add("cta");
       cell4.appendChild(editBtn);
 
       editBtn.addEventListener("click", () => {
@@ -128,6 +129,7 @@ export default () => {
       // Create the Delete button
       const deleteBtn = document.createElement("button");
       deleteBtn.innerHTML = "DELETE";
+      deleteBtn.classList.add("cta");
       cell5.appendChild(deleteBtn);
 
       deleteBtn.addEventListener("click", () => {
