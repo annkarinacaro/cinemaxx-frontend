@@ -53,6 +53,12 @@ export default function initSeatSelector(id, onSuccess) {
             }
         }
 
+        // Screen visual
+        const screenElement = document.createElement("div");
+        screenElement.classList.add("movie-screen");
+        screenElement.innerHTML = "SCREEN";
+        seatSelector.appendChild(screenElement);
+
         onSuccess();
     });
 }
