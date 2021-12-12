@@ -23,6 +23,7 @@ router
     "/edit": () => {
       renderEdit();
     },
+    // :)
     "/dashboard": () => {
       renderDashboard();
     },
