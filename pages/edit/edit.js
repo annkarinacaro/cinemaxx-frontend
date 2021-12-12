@@ -1,5 +1,7 @@
-import initSeatSelector, {initUpdateButton, updateBookingSeats} from "../../scripts/booking.js"; 
-
+import initSeatSelector, {
+    initUpdateButton,
+    updateBookingSeats,
+} from "../../scripts/booking.js";
 
 export default () => {
     const content = document.querySelector(".content");
@@ -8,20 +10,15 @@ export default () => {
         .then((html) => {
             content.innerHTML = html;
             initFindBookingButton();
-        
         });
 
     const backendURI = "https://cinema-backend1.herokuapp.com";
     let email;
-    //DELETE /booking/{id}/?email={email}
-    //PUT/ booking /{id}
 
     const initFindBookingButton = () => {
         const bookingButton = document.querySelector(".find-booking-button");
         bookingButton.addEventListener("click", findBookings);
     };
-
-
 
     const findBookings = () => {
         email = document.querySelector(".email").value;
@@ -68,10 +65,14 @@ export default () => {
                     const seatsButtonElement = document.createElement("button");
                     seatsButtonElement.innerHTML = "edit";
                     seatsButtonElement.classList.add("cta");
-                    seatsButtonElement.addEventListener('click', () => {
-                        initSeatSelector(booking.viewing.viewingId, () => updateBookingSeats(booking.bookingId));
+                    seatsButtonElement.addEventListener("click", () => {
+                        initSeatSelector(booking.viewing.viewingId, () =>
+                            updateBookingSeats(booking.bookingId)
+                        );
                         const overlay = document.querySelector(".overlay");
-                        initUpdateButton(email, () => overlay.classList.add("hidden"));
+                        initUpdateButton(email, () =>
+                            overlay.classList.add("hidden")
+                        );
                         overlay.classList.remove("hidden");
                     });
                     seatsTdElement.appendChild(seatsButtonElement);
@@ -83,8 +84,15 @@ export default () => {
                         document.createElement("button");
                     deleteButtonElement.innerHTML = "delete";
                     deleteButtonElement.classList.add("cta");
-                    deleteButtonElement.addEventListener('click', () => {
-                        fetch(backendURI + "/booking/" + booking.bookingId +"?email=" + email, {method: "DELETE"})
+                    deleteButtonElement.addEventListener("click", () => {
+                        fetch(
+                            backendURI +
+                                "/booking/" +
+                                booking.bookingId +
+                                "?email=" +
+                                email,
+                            { method: "DELETE" }
+                        )
                             .then((response) => response.text())
                             .then(() => {
                                 tableElement.removeChild(trElement);
@@ -94,8 +102,6 @@ export default () => {
                 });
             });
     };
-
-
 };
 
 function leadingZeroes(num, size) {
